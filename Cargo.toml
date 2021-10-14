@@ -1,0 +1,18 @@
+[package]
+name = "nebula"
+version = "0.1.0"
+authors = ["Luuk van Oijen <lazyluuk.channel@gmail.com>"]
+edition = "2018"
+resolver = "2"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4"
+pretty_env_logger = "0.4.0"
+
+winit = "0.25.0"
+winit_input_helper = "0.10.0"
+
+nebula_scene = { path = "nebula_scene" }
+nebula_render = { path = "nebula_render" }
