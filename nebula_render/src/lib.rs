@@ -1,9 +1,14 @@
+use std::collections::HashMap;
+
 use winit::window::Window;
 
+use wgpu::ShaderModule;
 use wgpu::Instance;
 use wgpu::Surface;
 use wgpu::Queue;
 use wgpu::Device;
+
+use wgpu::include_spirv;
 
 pub use nebula_scene::Scene;
 
@@ -40,6 +45,8 @@ pub struct Renderer {
     surface: Surface,
     device: Device,
     queue: Queue,
+
+    shaders: HashMap<String, ShaderModule>,
 }
 
 impl Renderer {
@@ -48,15 +55,29 @@ impl Renderer {
         let surface = unsafe { instance.create_surface(window) };
         let (device, queue) = pollster::block_on(wgpu_device(&instance, &surface));
 
-        Self {
+        let mut obj = Self {
             instance: instance,
             surface: surface,
             device: device,
             queue: queue,
-        }
+
+            shaders: HashMap::new(),
+        };
+
+        obj.load_shader_spirv("rt_main", include_spirv!("../shaders/rt.spirv"));
+
+        obj
+    }
+
+    pub fn load_shader_spirv(&mut self, name: impl AsRef<str>, src: &[u32]) {
+        let shader = self.device.create_shader_module(&wgpu::ShaderModuleDescriptor {
+            label: None,
+            source: wgpu::ShaderSource::SpirV(std::borrow::Cow::Borrowed(src))
+        });
+        self.shaders.insert(name.as_ref().to_string(), shader);
     }
 
     pub fn render_scene(&self, scene: &Scene) {
-        
+
     }
 }
