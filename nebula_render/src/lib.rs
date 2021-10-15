@@ -64,7 +64,7 @@ impl Renderer {
             shaders: HashMap::new(),
         };
 
-        obj.load_shader_spirv("rt_main", include_spirv!("../shaders/rt.spirv"));
+        // obj.load_shader_raw("rt_main", include_spirv!("../shaders/rt.spirv"));
 
         obj
     }
@@ -74,6 +74,11 @@ impl Renderer {
             label: None,
             source: wgpu::ShaderSource::SpirV(std::borrow::Cow::Borrowed(src))
         });
+        self.shaders.insert(name.as_ref().to_string(), shader);
+    }
+
+    pub fn load_shader_raw(&mut self, name: impl AsRef<str>, src: wgpu::ShaderModuleDescriptor) {
+        let shader = self.device.create_shader_module(&src);
         self.shaders.insert(name.as_ref().to_string(), shader);
     }
 
