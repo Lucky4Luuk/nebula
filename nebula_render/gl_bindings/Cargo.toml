@@ -1,0 +1,13 @@
+[package]
+name = "gl_bindings"
+description = "OpenGL bindings"
+version = "0.1.0"
+edition = "2018"
+authors = ["Luuk van Oijen <lazyluuk.channel@gmail.com>"]
+build = "build.rs"
+license = "MIT"
+
+[build-dependencies]
+gl_generator = "0.14.0"
+
+[dependencies]

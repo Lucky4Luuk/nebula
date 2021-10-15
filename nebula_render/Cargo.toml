@@ -7,9 +7,10 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-pollster = "0.2.4"
-winit = "0.25.0"
-wgpu = { version = "0.11.0", features = ["spirv"] }
-naga = "0.7.1"
+log = "0.4"
+
+raw-window-handle = "0.3.3"
+raw-gl-context = "0.1.2"
+gl_bindings = { path = "gl_bindings" }
 
 nebula_scene = { path = "../nebula_scene" }
