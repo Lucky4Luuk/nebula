@@ -1,5 +1,5 @@
-mod obj;
-pub use obj::Object;
+mod object;
+pub use object::Object;
 
 pub struct Scene {
     pub objects: Vec<Object>,

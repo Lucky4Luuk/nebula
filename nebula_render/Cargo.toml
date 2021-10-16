@@ -9,6 +9,8 @@ edition = "2018"
 [dependencies]
 log = "0.4"
 
+glam = "0.19.0"
+
 raw-window-handle = "0.3.3"
 raw-gl-context = "0.1.2"
 gl_bindings = { path = "gl_bindings" }

@@ -9,6 +9,8 @@ use gl_bindings::Gl as RawGl;
 mod framebuilder;
 use framebuilder::FrameBuilder;
 
+pub mod scene_renderer;
+
 pub struct Gl {
     gl: RawGl,
     context: GlContext,
