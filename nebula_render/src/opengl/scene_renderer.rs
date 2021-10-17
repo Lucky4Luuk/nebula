@@ -14,6 +14,8 @@ impl SceneRenderer {
     }
 
     pub fn render_scene(&self, frame: &FrameBuilder, scene: &Scene) {
-        
+        unsafe {
+            // frame.gl.do_stuff()
+        }
     }
 }

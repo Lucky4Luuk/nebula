@@ -1,7 +1,7 @@
 use crate::opengl::Gl;
 
 pub struct FrameBuilder<'gl> {
-    gl: &'gl Gl,
+    pub(crate) gl: &'gl Gl,
 }
 
 impl<'gl> FrameBuilder<'gl> {
