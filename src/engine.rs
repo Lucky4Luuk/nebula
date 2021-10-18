@@ -13,14 +13,13 @@ impl Engine {
     pub fn from_window_builder(el: &EventLoop<()>, wb: WindowBuilder) -> Self {
         let window = wb.build(&el).expect("Failed to open window!");
         Self {
-            renderer: Renderer::from_handle(&window),
+            renderer: Renderer::from_handle(&window, window.inner_size().into()),
             window: window,
         }
     }
 
     pub fn render(&mut self) {
-        let frame = self.renderer.render();
-        frame.clear((1.0, 0.0, 0.0, 1.0));
+        let frame = self.renderer.render((1.0, 0.0, 0.0, 1.0));
         frame.finish();
     }
 }

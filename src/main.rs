@@ -34,6 +34,7 @@ fn main() {
 
             if let Some(size) = input.window_resized() {
                 engine.window.set_inner_size(size);
+                engine.renderer.on_resize(size.into());
             }
 
             engine.window.request_redraw();
