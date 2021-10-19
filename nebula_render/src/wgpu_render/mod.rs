@@ -68,6 +68,6 @@ impl Renderer {
     }
 
     pub fn render(&self, rgba: (f32, f32, f32, f32)) -> FrameBuilder {
-        FrameBuilder::new(&self.surface, &self.main_queue, rgba)
+        FrameBuilder::new(&self.surface, &self.main_queue, &self.device, rgba)
     }
 }
