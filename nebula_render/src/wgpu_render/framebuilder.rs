@@ -44,6 +44,8 @@ impl<'wgpu> FrameBuilder<'wgpu> {
                     }],
                     depth_stencil_attachment: None,
                 });
+                //rpass.set_pipeline()
+                //rpass.draw(0..3, 0..1) //vertex range, instance range
             }
 
             self.queue.submit(Some(encoder.finish()));
